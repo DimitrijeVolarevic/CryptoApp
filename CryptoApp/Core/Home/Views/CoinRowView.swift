@@ -13,21 +13,16 @@ struct CoinRowView: View {
     let showHoldingsColumn: Bool
     
     var body: some View {
-        GeometryReader { geometry in
-                    HStack(spacing: 0) {
-                        leftColumn
-                        Spacer()
-                        if showHoldingsColumn {
-                            centerColumn
-                        }
+        HStack(spacing: 0) {
+            leftColumn
+                    Spacer()
+                    if showHoldingsColumn {
                         centerColumn
-                        .frame(width: geometry.size.width / 3.5, alignment: .trailing)
                     }
-                    .font(.subheadline)
+                    rightColumn
                 }
-        .padding(.vertical, 350)
+            }
     }
-}
 
 struct CoinRowView_Previews: PreviewProvider {
     static var previews: some View {
@@ -72,9 +67,9 @@ extension CoinRowView {
                 .foregroundColor(Color.theme.accent)
             Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
                 .foregroundColor(
-                    (coin.priceChangePercentage24H ?? 0) >= 0 ?
-                    Color.theme.green : Color.theme.red
+                    coin.priceChangePercentage24H ?? 0 >= 0 ? Color.theme.green : Color.theme.red
                 )
         }
+        .frame(width: UIScreen.main.bounds.width / 3)
     }
 }
