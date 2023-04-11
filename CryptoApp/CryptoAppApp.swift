@@ -17,6 +17,7 @@ struct CryptoAppApp: App {
             NavigationView {
                 HomeView()
                     .toolbar(.hidden)
+                    .preferredColorScheme(.dark)
             }
             .environmentObject(vm)
         }
