@@ -1,10 +1,3 @@
-//
-//  Date.swift
-//  SwiftfulCrypto
-//
-//  Created by Nick Sarno on 5/13/21.
-//
-
 import Foundation
 
 extension Date {
