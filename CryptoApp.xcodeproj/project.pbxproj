@@ -54,6 +54,7 @@
 		B7EA336229E32BE3000722E9 /* CoinImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA336129E32BE3000722E9 /* CoinImageService.swift */; };
 		B7EA336429E32D64000722E9 /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA336329E32D64000722E9 /* CoinImageViewModel.swift */; };
 		B7EA336629E33427000722E9 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA336529E33427000722E9 /* LocalFileManager.swift */; };
+		B7EC2AAA29E867B1008B39A0 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EC2AA929E867B1008B39A0 /* CoinLogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		B7EA336129E32BE3000722E9 /* CoinImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageService.swift; sourceTree = "<group>"; };
 		B7EA336329E32D64000722E9 /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
 		B7EA336529E33427000722E9 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
+		B7EC2AA929E867B1008B39A0 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 			children = (
 				B7EA335F29E32A66000722E9 /* CoinImageView.swift */,
 				B7EA336329E32D64000722E9 /* CoinImageViewModel.swift */,
+				B7EC2AA929E867B1008B39A0 /* CoinLogoView.swift */,
 			);
 			path = CoinImage;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				B7A5D08D29E0A497004A0AB1 /* Color.swift in Sources */,
 				B7A5D07829E0A497004A0AB1 /* CoinDetail.swift in Sources */,
 				B7EA336429E32D64000722E9 /* CoinImageViewModel.swift in Sources */,
+				B7EC2AAA29E867B1008B39A0 /* CoinLogoView.swift in Sources */,
 				B7A5D08829E0A497004A0AB1 /* Date.swift in Sources */,
 				B7A5D04529E09FD9004A0AB1 /* CryptoAppApp.swift in Sources */,
 				B7858B7529E31CDC003FF390 /* NetworkingManager.swift in Sources */,
