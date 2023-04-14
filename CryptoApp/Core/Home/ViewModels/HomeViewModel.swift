@@ -15,6 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var allCoins: [Coin] = []
     @Published var portfolioCoins: [Coin] = []
+    @Published var isLoading: Bool = false
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
@@ -40,9 +41,11 @@ class HomeViewModel: ObservableObject {
         
         // updates marketData
         marketDataService.$marketData
+            .combineLatest($portfolioCoins)
             .map(mapGlobalMarketData)
             .sink { [weak self] returnedStats in
                 self?.statistics = returnedStats
+                self?.isLoading = false
             }
             .store(in: &cancellables)
         
@@ -50,17 +53,7 @@ class HomeViewModel: ObservableObject {
         
         $allCoins
             .combineLatest(portfolioDataService.$savedEntities)
-            .map { coinModels, portfolioEntities -> [Coin] in
-                
-                coinModels
-                    .compactMap { coin -> Coin? in
-                        guard let entiity = portfolioEntities.first(where: {$0.coinID == coin.id}) else {
-                            return nil
-                            
-                        }
-                        return coin.updateHoldings(amount: entiity.amount)
-                    }
-            }
+            .map(mapAllCoinsToPortfolioCoins)
             .sink { [weak self] returnedCoins in
                 self?.portfolioCoins = returnedCoins
             }
@@ -69,6 +62,13 @@ class HomeViewModel: ObservableObject {
     
     func updatePortfolio(coin: Coin, amount: Double) {
         portfolioDataService.updatePortfoio(coin: coin, amount: amount)
+    }
+    
+    func reloadData() {
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getData()
+        
     }
     
     private func filterCoins(text: String, coins: [Coin]) -> [Coin] {
@@ -86,7 +86,18 @@ class HomeViewModel: ObservableObject {
         
     }
     
-    private func mapGlobalMarketData(marketData: MarketData?) -> [Statistic] {
+    private func mapAllCoinsToPortfolioCoins(allCoins: [Coin], portfolioEntities: [PortfolioEntity]) -> [Coin] {
+        allCoins
+            .compactMap { coin -> Coin? in
+                guard let entiity = portfolioEntities.first(where: {$0.coinID == coin.id}) else {
+                    return nil
+                    
+                }
+                return coin.updateHoldings(amount: entiity.amount)
+            }
+    }
+    
+    private func mapGlobalMarketData(marketData: MarketData?, portfolioCoins: [Coin]) -> [Statistic] {
         
         var stats: [Statistic] = []
         
@@ -97,13 +108,30 @@ class HomeViewModel: ObservableObject {
         let marketCap = Statistic(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
         let volume = Statistic(title: "24h Volume", value: data.volume)
         let btcDominance = Statistic(title: "BTC Dominance", value: data.btcDominance)
-        let portfolioValue = Statistic(title: "Portfolio value", value: "$0.00", percentageChange: 0)
+        
+        
+        let portfolioValue =
+        portfolioCoins
+            .map({$0.currentHoldingsValue})
+            .reduce(0, +)
+        
+        let previousValue = portfolioCoins.map { coin -> Double in
+            let currentValue = coin.currentHoldingsValue
+            let percentChange = coin.priceChangePercentage24H ?? 0 / 100
+            let previousValue = currentValue / (1 + percentChange)
+            return previousValue
+        }
+            .reduce(0, +)
+        
+        let percentageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        
+        let portfolio = Statistic(title: "Portfolio value", value: portfolioValue.asCurrencyWith2Decimals(), percentageChange: percentageChange)
         
         stats.append(contentsOf: [
             marketCap,
             volume,
             btcDominance,
-            portfolioValue
+            portfolio
         ])
         return stats
     }
