@@ -95,7 +95,6 @@ extension PortfolioView {
             quantityText = "\(amount)"
         } else {
             quantityText = ""
-            selectedCoin?.currentHoldings = nil
         }
     }
     
@@ -137,7 +136,7 @@ extension PortfolioView {
                 .opacity(showCheckmark ? 1.0 : 0.0)
             
             Button {
-                
+                savedButtonPressed()
             } label: {
                 Text("Save".uppercased())
             }
@@ -158,8 +157,6 @@ extension PortfolioView {
         
         // save to portfolio
         vm.updatePortfolio(coin: coin, amount: amount)
-        selectedCoin?.currentHoldings = amount
-            quantityText = ""
         
         
         // show checkmark

@@ -111,13 +111,61 @@ extension HomeView {
     
     private var columnTitles: some View {
         HStack {
-            Text("Coin")
+            HStack(spacing: 4) {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity(vm.sortOptions == .rank || vm.sortOptions == .rankReversed ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOptions == .rank ? 0 : 180))
+            }
+            
+            .onTapGesture {
+                withAnimation(.default) {
+                    if vm.sortOptions == .rank {
+                        vm.sortOptions = .rankReversed
+                    } else {
+                        vm.sortOptions = .rank
+                    }
+                }
+
+            }
+            
             Spacer()
             if showPortfolio {
-                Text("Holdings")
+                HStack(spacing: 4) {
+                    Text("Holdings")
+                    Image(systemName: "chevron.down")
+                        .opacity(vm.sortOptions == .holdings || vm.sortOptions == .holdingsReversed ? 1.0 : 0.0)
+                        .rotationEffect(Angle(degrees: vm.sortOptions == .holdings ? 0 : 180))
+                }
+                .onTapGesture {
+                    withAnimation(.default) {
+                        if vm.sortOptions == .holdings {
+                            vm.sortOptions = .holdingsReversed
+                        } else {
+                            vm.sortOptions = .holdings
+                        }
+                    }
+
+                }
+                
             }
-            Text("Prices")
-                .frame(width: UIScreen.main.bounds.width / 3)
+            HStack(spacing: 4) {
+                Text("Prices")
+                Image(systemName: "chevron.down")
+                    .opacity(vm.sortOptions == .price || vm.sortOptions == .price ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOptions == .price ? 0 : 180))
+            }
+            .frame(width: UIScreen.main.bounds.width / 3)
+            .onTapGesture {
+                withAnimation(.default) {
+                    if vm.sortOptions == .price {
+                        vm.sortOptions = .priceReversed
+                    } else {
+                        vm.sortOptions = .price
+                    }
+                }
+
+            }
             
             Button  {
                 withAnimation(.linear(duration: 2.0)) {
