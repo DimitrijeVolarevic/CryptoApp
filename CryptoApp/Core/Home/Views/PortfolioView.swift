@@ -45,6 +45,11 @@ struct PortfolioView: View {
                 }
             
             }
+            .onChange(of: vm.searchText) { newValue in
+                if newValue == "" {
+                    removeSelectedCoin()
+                }
+            }
         }
     }
 }
@@ -61,13 +66,13 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.allCoins) { coin in
+                ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
                         .onTapGesture {
                             withAnimation(.easeIn) {
-                                selectedCoin = coin
+                                updatedSelectedCoin(coin: coin)
                             }
                         }
                         .background(
@@ -79,6 +84,18 @@ extension PortfolioView {
             }
             .frame(height: 120)
             .padding(.leading)
+        }
+    }
+    
+    private func updatedSelectedCoin(coin: Coin) {
+        selectedCoin = coin
+        
+        if let portfolioCoin = vm.portfolioCoins.first(where: {$0.id == coin.id}),
+           let amount = portfolioCoin.currentHoldings {
+            quantityText = "\(amount)"
+        } else {
+            quantityText = ""
+            selectedCoin?.currentHoldings = nil
         }
     }
     
@@ -134,9 +151,15 @@ extension PortfolioView {
     
     private func savedButtonPressed() {
         
-        guard let coin = selectedCoin else { return }
+        guard
+            let coin = selectedCoin,
+            let amount = Double(quantityText)
+            else { return }
         
         // save to portfolio
+        vm.updatePortfolio(coin: coin, amount: amount)
+        selectedCoin?.currentHoldings = amount
+            quantityText = ""
         
         
         // show checkmark
