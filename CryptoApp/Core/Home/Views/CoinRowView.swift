@@ -21,8 +21,12 @@ struct CoinRowView: View {
                     }
                     rightColumn
                 }
-            }
+        .font(.headline)
+        .background(
+            Color.theme.background.opacity(0.001)
+        )
     }
+}
 
 struct CoinRowView_Previews: PreviewProvider {
     static var previews: some View {
