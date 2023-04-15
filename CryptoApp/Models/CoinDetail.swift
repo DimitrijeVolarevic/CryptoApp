@@ -13,10 +13,17 @@ import Foundation
    "platforms": {
      "": ""
    },
+   "detail_platforms": {
+     "": {
+       "decimal_place": null,
+       "contract_address": ""
+     }
+   },
    "block_time_in_minutes": 10,
    "hashing_algorithm": "SHA-256",
    "categories": [
-     "Cryptocurrency"
+     "Cryptocurrency",
+     "Layer 1 (L1)"
    ],
    "public_notice": null,
    "additional_notices": [],
@@ -32,7 +39,12 @@ import Foundation
      "blockchain_site": [
        "https://blockchair.com/bitcoin/",
        "https://btc.com/",
-       "https://btc.tokenview.com/",
+       "https://btc.tokenview.io/",
+       "",
+       "",
+       "",
+       "",
+       "",
        "",
        ""
      ],
@@ -50,7 +62,7 @@ import Foundation
        "",
        ""
      ],
-     "twitter_screen_name": "btc",
+     "twitter_screen_name": "bitcoin",
      "facebook_username": "bitcoins",
      "bitcointalk_thread_identifier": null,
      "telegram_channel_identifier": "",
@@ -70,21 +82,21 @@ import Foundation
    },
    "country_origin": "",
    "genesis_date": "2009-01-03",
-   "sentiment_votes_up_percentage": 65.73,
-   "sentiment_votes_down_percentage": 34.27,
+   "sentiment_votes_up_percentage": 81.03,
+   "sentiment_votes_down_percentage": 18.97,
    "market_cap_rank": 1,
-   "coingecko_rank": 2,
-   "coingecko_score": 79.223,
-   "developer_score": 98.887,
-   "community_score": 65.771,
-   "liquidity_score": 100.158,
-   "public_interest_score": 0,
+   "coingecko_rank": 1,
+   "coingecko_score": 83.151,
+   "developer_score": 99.241,
+   "community_score": 83.341,
+   "liquidity_score": 100.011,
+   "public_interest_score": 0.073,
    "public_interest_stats": {
      "alexa_rank": 9440,
      "bing_matches": null
    },
    "status_updates": [],
-   "last_updated": "2021-05-11T06:47:11.426Z"
+   "last_updated": "2023-04-15T08:47:51.255Z"
  }
  
  */
