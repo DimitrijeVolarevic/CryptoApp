@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7386FDE29EBEB7D00073CB5 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7386FDD29EBEB7D00073CB5 /* ChartView.swift */; };
 		B7739F2829E1F07A000D3DCA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7739F2729E1F07A000D3DCA /* HomeViewModel.swift */; };
 		B7739F2B29E1F9E8000D3DCA /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7739F2A29E1F9E8000D3DCA /* CoinDataService.swift */; };
 		B7858B7529E31CDC003FF390 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7858B7429E31CDC003FF390 /* NetworkingManager.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7386FDD29EBEB7D00073CB5 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B7739F2729E1F07A000D3DCA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B7739F2A29E1F9E8000D3DCA /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		B7858B7429E31CDC003FF390 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				B792B05E29EA8EE0008A1D31 /* DetailView.swift */,
+				B7386FDD29EBEB7D00073CB5 /* ChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				B7EC2AAA29E867B1008B39A0 /* CoinLogoView.swift in Sources */,
 				B7A5D08829E0A497004A0AB1 /* Date.swift in Sources */,
 				B7A5D04529E09FD9004A0AB1 /* CryptoAppApp.swift in Sources */,
+				B7386FDE29EBEB7D00073CB5 /* ChartView.swift in Sources */,
 				B7858B7529E31CDC003FF390 /* NetworkingManager.swift in Sources */,
 				B7A5D07629E0A497004A0AB1 /* PortfolioContainer.xcdatamodeld in Sources */,
 				B7EA336229E32BE3000722E9 /* CoinImageService.swift in Sources */,
