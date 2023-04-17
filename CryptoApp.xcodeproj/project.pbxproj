@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7386FDE29EBEB7D00073CB5 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7386FDD29EBEB7D00073CB5 /* ChartView.swift */; };
+		B76820EC29ED37F400662A21 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76820EB29ED37F400662A21 /* SettingsView.swift */; };
 		B7739F2829E1F07A000D3DCA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7739F2729E1F07A000D3DCA /* HomeViewModel.swift */; };
 		B7739F2B29E1F9E8000D3DCA /* CoinDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7739F2A29E1F9E8000D3DCA /* CoinDataService.swift */; };
 		B7858B7529E31CDC003FF390 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7858B7429E31CDC003FF390 /* NetworkingManager.swift */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		B7386FDD29EBEB7D00073CB5 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		B76820EB29ED37F400662A21 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B7739F2729E1F07A000D3DCA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B7739F2A29E1F9E8000D3DCA /* CoinDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataService.swift; sourceTree = "<group>"; };
 		B7858B7429E31CDC003FF390 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
@@ -130,6 +132,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B76820E929ED37A800662A21 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B76820EA29ED37D700662A21 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B76820EA29ED37D700662A21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B76820EB29ED37F400662A21 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B7739F2929E1F9B1000D3DCA /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +305,7 @@
 				B792B05B29EA8EAE008A1D31 /* Detail */,
 				B7A5D09529E0A842004A0AB1 /* Components */,
 				B7A5D09029E0A734004A0AB1 /* Home */,
+				B76820E929ED37A800662A21 /* Settings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -441,6 +460,7 @@
 				B7B550BA29E6D19E00A28351 /* HomeStatsView.swift in Sources */,
 				B7A5D09429E0A78A004A0AB1 /* HomeView.swift in Sources */,
 				B7A5D04729E09FD9004A0AB1 /* ContentView.swift in Sources */,
+				B76820EC29ED37F400662A21 /* SettingsView.swift in Sources */,
 				B7B550BC29E6D88100A28351 /* MarketDataService.swift in Sources */,
 				B7739F2B29E1F9E8000D3DCA /* CoinDataService.swift in Sources */,
 				B7C9496329E5DC7900DA3BEA /* SearchBarView.swift in Sources */,
