@@ -25,6 +25,7 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @StateObject private var vm: DetailViewModel
+    @State private var showFullDescription: Bool = false
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -46,12 +47,15 @@ struct DetailView: View {
                     overviewTitle
                     Divider()
                     
-                    overviewGrid
+                    descriptionSection
                     
+                    overviewGrid
                     additionalTitle
                     Divider()
-                    
                     additionalGrid
+                    
+                    websiteSection
+                    
 
                 }
             }
@@ -102,6 +106,52 @@ extension DetailView {
             .bold()
             .foregroundColor(Color.theme.accent)
             .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    
+    private var descriptionSection: some View {
+        ZStack {
+            if let coinDescription = vm.coinDescription, !coinDescription.isEmpty {
+                VStack(alignment: .leading) {
+                    Text(coinDescription)
+                        .lineLimit(showFullDescription ? nil : 3)
+                        .font(.callout)
+                        .foregroundColor(Color.theme.secondaryText)
+                    
+                    Button {
+                        withAnimation(.easeInOut) {
+                            showFullDescription.toggle()
+                        }
+                    } label: {
+                        Text(showFullDescription ? "Less" : "Read more..")
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .padding(.vertical,4)
+                    }
+                    .tint(.blue)
+                }
+                .frame(maxWidth: .infinity)
+                
+            }
+        }
+
+    }
+    
+    private var websiteSection: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            
+            if let website = vm.websiteURL,
+               let url = URL(string: website) {
+                Link("Website", destination: url)
+            }
+            
+            if let reddit = vm.redditURL,
+               let url = URL(string: reddit) {
+                Link("Reddit" , destination: url)
+            }
+        }
+        .tint(.blue)
+        .frame(maxWidth: .infinity,alignment: .leading)
+        .font(.headline)
     }
     
     private var overviewGrid: some View {
