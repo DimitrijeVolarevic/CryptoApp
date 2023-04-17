@@ -29,10 +29,14 @@ struct PortfolioView: View {
                         portfolioInputSection
                     }
                 }
-                .animation(.none, value: quantityText) // proveriti kad se ucitaju podaci
+                .animation(.none, value: quantityText)
                 .padding()
                 .font(.headline)
             }
+            .background(
+                Color.theme.background
+                    .ignoresSafeArea()
+            )
             .navigationTitle("Edit Portfolio")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
